@@ -1,0 +1,15 @@
+services:
+  local:
+    build:
+      context: ../
+      dockerfile: build/dockerfile
+    stdin_open: true
+    tty: true
+    image: kaldi_data_processor:v0.0.1
+    volumes:
+      - $HOME/code/kaldi-data-processor/:/kaldi_data_processor
+      - $HOME/datasets/:/datasets
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    shm_size: 32gb
